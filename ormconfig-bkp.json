@@ -1,14 +1,13 @@
 {
-  "username": "postgres",
-  "password": "docker",
-
   "type": "postgres",
-  "name": "default",
   "host": "localhost",
   "port": 5432,
+  "username": "postgres",
+  "password": "docker",
   "database": "queries_challenge",
-  "entities": ["./src/modules/**/entities/*.ts"],
+  "name": "default",
   "migrations": ["./src/database/migrations/*.ts"],
+  "entities": ["./src/modules/**/entities/*.ts"],
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
