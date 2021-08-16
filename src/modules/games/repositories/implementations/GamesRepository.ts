@@ -11,7 +11,7 @@ export class GamesRepository implements IGamesRepository {
     this.repository = getRepository(Game);
   }
 
-  findByTitleContaining(title: string): Promise<Game[]> {
+  async findByTitleContaining(title: string): Promise<Game[]> {
     return this.repository
       .createQueryBuilder('game')
       .where('game.title ILIKE :title', {
@@ -20,17 +20,13 @@ export class GamesRepository implements IGamesRepository {
       .getMany();
   }
 
-  countAllGames(): Promise<[{ count: string }]> {
-    throw new Error('Method not implemented.');
+  async countAllGames(): Promise<[{ count: string }]> {
+    return this.repository.query('SELECT COUNT(DISTINCT title) FROM games');
   }
 
-  findUsersByGameId(id: string): Promise<User[]> {
+  async findUsersByGameId(id: string): Promise<User[]> {
     throw new Error('Method not implemented.');
   }
-
-  // async countAllGames(): Promise<[{ count: string }]> {
-  //   return this.repository.query(); // Complete usando raw query
-  // }
 
   // async findUsersByGameId(id: string): Promise<User[]> {
   //   return this.repository.createQueryBuilder();

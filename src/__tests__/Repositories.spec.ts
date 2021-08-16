@@ -206,11 +206,11 @@ describe('Repositories', () => {
     ]);
   });
 
-  // it('[GamesRepository] should be able to get the total count of games', async () => {
-  //   const [{ count }] = await gamesRepository.countAllGames();
+  it('[GamesRepository] should be able to get the total count of games', async () => {
+    const [{ count }] = await gamesRepository.countAllGames();
 
-  //   expect(count).toBe('4');
-  // });
+    expect(count).toBe('4');
+  });
 
   // it('[GamesRepository] should be able to list users who have given game id', async () => {
   //   const game = await ormGamesRepository.findOneOrFail({

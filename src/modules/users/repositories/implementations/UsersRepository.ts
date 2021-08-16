@@ -11,11 +11,11 @@ export class UsersRepository implements IUsersRepository {
     this.repository = getRepository(User);
   }
 
-  findAllUsersOrderedByFirstName(): Promise<User[]> {
+  async findAllUsersOrderedByFirstName(): Promise<User[]> {
     return this.repository.query('SELECT * FROM users ORDER BY first_name ASC');
   }
 
-  findUserByFullName({
+  async findUserByFullName({
     first_name,
     last_name,
   }: IFindUserByFullNameDTO): Promise<User[] | undefined> {

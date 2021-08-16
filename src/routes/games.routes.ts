@@ -13,4 +13,11 @@ gamesRoutes.get('/', async (req: Request, res: Response) => {
   return res.json(games);
 });
 
+gamesRoutes.get('/count', async (_req: Request, res: Response) => {
+  const gamesRepository = new GamesRepository();
+  const count = await gamesRepository.countAllGames();
+
+  return res.json(count);
+});
+
 export { gamesRoutes };
