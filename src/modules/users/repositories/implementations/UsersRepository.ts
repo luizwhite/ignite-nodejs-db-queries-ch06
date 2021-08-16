@@ -10,10 +10,14 @@ export class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+
   findAllUsersOrderedByFirstName(): Promise<User[]> {
-    throw new Error('Method not implemented.');
+    return this.repository.query('SELECT * FROM users ORDER BY first_name ASC');
   }
-  findUserByFullName(data: IFindUserByFullNameDTO): Promise<User[] | undefined> {
+
+  findUserByFullName(
+    data: IFindUserByFullNameDTO
+  ): Promise<User[] | undefined> {
     throw new Error('Method not implemented.');
   }
 
@@ -24,10 +28,6 @@ export class UsersRepository implements IUsersRepository {
 
     return userFound || null;
   }
-
-  // async findAllUsersOrderedByFirstName(): Promise<User[]> {
-  //   return this.repository.query(); // Complete usando raw query
-  // }
 
   // async findUserByFullName({
   //   first_name,

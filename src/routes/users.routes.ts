@@ -73,4 +73,11 @@ usersRoutes.get('/with-games/:user_id', async (req: Request, res: Response) => {
   return res.json(userFound);
 });
 
+usersRoutes.get('/asc', async (_req: Request, res: Response) => {
+  const usersRepository = new UsersRepository();
+  const users = await usersRepository.findAllUsersOrderedByFirstName();
+
+  return res.json(users);
+});
+
 export { usersRoutes };

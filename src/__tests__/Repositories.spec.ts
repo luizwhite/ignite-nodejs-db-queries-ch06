@@ -130,24 +130,24 @@ describe('Repositories', () => {
     });
   });
 
-  // it('[UsersRepository] should be able to list users ordered by first name', async () => {
-  //   const users = await usersRepository.findAllUsersOrderedByFirstName();
+  it('[UsersRepository] should be able to list users ordered by first name', async () => {
+    const users = await usersRepository.findAllUsersOrderedByFirstName();
 
-  //   expect(users).toEqual([
-  //     expect.objectContaining({
-  //       first_name: 'Daniele',
-  //     }),
-  //     expect.objectContaining({
-  //       first_name: 'Danilo',
-  //     }),
-  //     expect.objectContaining({
-  //       first_name: 'Joseph',
-  //     }),
-  //     expect.objectContaining({
-  //       first_name: 'Vinicius',
-  //     }),
-  //   ]);
-  // });
+    expect(users).toEqual([
+      expect.objectContaining({
+        first_name: 'Daniele',
+      }),
+      expect.objectContaining({
+        first_name: 'Danilo',
+      }),
+      expect.objectContaining({
+        first_name: 'Joseph',
+      }),
+      expect.objectContaining({
+        first_name: 'Vinicius',
+      }),
+    ]);
+  });
 
   // it('[UsersRepository] should be able to find user by full name', async () => {
   //   const result1 = await usersRepository.findUserByFullName({
