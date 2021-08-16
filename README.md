@@ -1,7 +1,7 @@
 ## Ignite NodeJS - Challenge 06
 
 ### UsersRepository
-- [ ] Should be able to find user with games list by user's ID
+- [x] Should be able to find user with games list by user's ID
 - [ ] Should be able to list users ordered by first name
 - [ ] Should be able to find user by full name
 

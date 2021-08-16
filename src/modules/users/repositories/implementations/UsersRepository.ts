@@ -10,21 +10,29 @@ export class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+  findAllUsersOrderedByFirstName(): Promise<User[]> {
+    throw new Error('Method not implemented.');
+  }
+  findUserByFullName(data: IFindUserByFullNameDTO): Promise<User[] | undefined> {
+    throw new Error('Method not implemented.');
+  }
 
   async findUserWithGamesById({
     user_id,
-  }: IFindUserWithGamesDTO): Promise<User> {
-    // Complete usando ORM
+  }: IFindUserWithGamesDTO): Promise<User | null> {
+    const userFound = await this.repository.findOne({ id: user_id });
+
+    return userFound || null;
   }
 
-  async findAllUsersOrderedByFirstName(): Promise<User[]> {
-    return this.repository.query(); // Complete usando raw query
-  }
+  // async findAllUsersOrderedByFirstName(): Promise<User[]> {
+  //   return this.repository.query(); // Complete usando raw query
+  // }
 
-  async findUserByFullName({
-    first_name,
-    last_name,
-  }: IFindUserByFullNameDTO): Promise<User[] | undefined> {
-    return this.repository.query(); // Complete usando raw query
-  }
+  // async findUserByFullName({
+  //   first_name,
+  //   last_name,
+  // }: IFindUserByFullNameDTO): Promise<User[] | undefined> {
+  //   return this.repository.query(); // Complete usando raw query
+  // }
 }
