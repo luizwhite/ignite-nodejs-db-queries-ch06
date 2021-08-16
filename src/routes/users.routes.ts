@@ -80,4 +80,16 @@ usersRoutes.get('/asc', async (_req: Request, res: Response) => {
   return res.json(users);
 });
 
+usersRoutes.get('/name', async (req: Request, res: Response) => {
+  const { first_name, last_name } = req.query;
+
+  const usersRepository = new UsersRepository();
+  const userFound = await usersRepository.findUserByFullName({
+    first_name: String(first_name),
+    last_name: String(last_name),
+  });
+
+  return res.json(userFound || null);
+});
+
 export { usersRoutes };
