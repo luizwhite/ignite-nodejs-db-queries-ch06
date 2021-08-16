@@ -10,20 +10,23 @@ export class GamesRepository implements IGamesRepository {
   constructor() {
     this.repository = getRepository(Game);
   }
+
   findByTitleContaining(title: string): Promise<Game[]> {
-    throw new Error('Method not implemented.');
+    return this.repository
+      .createQueryBuilder('game')
+      .where('game.title ILIKE :title', {
+        title: `%${title}%`,
+      })
+      .getMany();
   }
-  countAllGames(): Promise<[{ count: string; }]> {
-    throw new Error('Method not implemented.');
-  }
-  findUsersByGameId(id: string): Promise<User[]> {
+
+  countAllGames(): Promise<[{ count: string }]> {
     throw new Error('Method not implemented.');
   }
 
-  // async findByTitleContaining(param: string): Promise<Game[]> {
-  //   return this.repository.createQueryBuilder();
-  //   // Complete usando query builder
-  // }
+  findUsersByGameId(id: string): Promise<User[]> {
+    throw new Error('Method not implemented.');
+  }
 
   // async countAllGames(): Promise<[{ count: string }]> {
   //   return this.repository.query(); // Complete usando raw query

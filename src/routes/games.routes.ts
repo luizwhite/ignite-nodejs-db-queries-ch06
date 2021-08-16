@@ -1,18 +1,16 @@
 import { Router, Request, Response } from 'express';
-import { getRepository, Repository } from 'typeorm';
 
-import { Game } from '../modules/games/entities/Game';
 import { GamesRepository } from '../modules/games/repositories/implementations/GamesRepository';
 
 const gamesRoutes = Router();
 
-let ormGamesRepository: Repository<Game>;
-let gamesRepository: GamesRepository;
+gamesRoutes.get('/', async (req: Request, res: Response) => {
+  const { title } = req.query;
 
-gamesRoutes.post('/seed', (req: Request, res: Response) => {
-  ormGamesRepository = getRepository(Game);
+  const gamesRepository = new GamesRepository();
+  const games = await gamesRepository.findByTitleContaining(String(title));
 
-  return res.send();
+  return res.json(games);
 });
 
 export { gamesRoutes };
