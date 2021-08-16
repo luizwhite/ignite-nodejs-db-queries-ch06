@@ -20,4 +20,13 @@ gamesRoutes.get('/count', async (_req: Request, res: Response) => {
   return res.json(count);
 });
 
+gamesRoutes.get('/users/:id', async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const gamesRepository = new GamesRepository();
+  const users = await gamesRepository.findUsersByGameId(id);
+
+  return res.json(users);
+});
+
 export { gamesRoutes };

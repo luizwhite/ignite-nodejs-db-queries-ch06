@@ -25,11 +25,10 @@ export class GamesRepository implements IGamesRepository {
   }
 
   async findUsersByGameId(id: string): Promise<User[]> {
-    throw new Error('Method not implemented.');
+    return getRepository(User)
+      .createQueryBuilder('user')
+      .leftJoin('user.games', 'game')
+      .where('game.id = :id', { id })
+      .getMany();
   }
-
-  // async findUsersByGameId(id: string): Promise<User[]> {
-  //   return this.repository.createQueryBuilder();
-  //   // Complete usando query builder
-  // }
 }

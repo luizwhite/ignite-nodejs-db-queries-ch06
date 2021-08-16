@@ -212,31 +212,31 @@ describe('Repositories', () => {
     expect(count).toBe('4');
   });
 
-  // it('[GamesRepository] should be able to list users who have given game id', async () => {
-  //   const game = await ormGamesRepository.findOneOrFail({
-  //     where: {
-  //       title: 'Rocket League',
-  //     },
-  //   });
+  it('[GamesRepository] should be able to list users who have given game id', async () => {
+    const game = await ormGamesRepository.findOneOrFail({
+      where: {
+        title: 'Rocket League',
+      },
+    });
 
-  //   const users = await gamesRepository.findUsersByGameId(game.id);
+    const users = await gamesRepository.findUsersByGameId(game.id);
 
-  //   expect(users).toEqual([
-  //     expect.objectContaining({
-  //       first_name: 'Vinicius',
-  //       last_name: 'Fraga',
-  //       email: 'vinicius.fraga@rocketseat.com.br',
-  //     }),
-  //     expect.objectContaining({
-  //       first_name: 'Danilo',
-  //       last_name: 'Vieira',
-  //       email: 'danilo.vieira@rocketseat.com.br',
-  //     }),
-  //     expect.objectContaining({
-  //       first_name: 'Joseph',
-  //       last_name: 'Oliveira',
-  //       email: 'joseph.oliveira@rocketseat.com.br',
-  //     }),
-  //   ]);
-  // });
+    expect(users).toEqual([
+      expect.objectContaining({
+        first_name: 'Vinicius',
+        last_name: 'Fraga',
+        email: 'vinicius.fraga@rocketseat.com.br',
+      }),
+      expect.objectContaining({
+        first_name: 'Danilo',
+        last_name: 'Vieira',
+        email: 'danilo.vieira@rocketseat.com.br',
+      }),
+      expect.objectContaining({
+        first_name: 'Joseph',
+        last_name: 'Oliveira',
+        email: 'joseph.oliveira@rocketseat.com.br',
+      }),
+    ]);
+  });
 });

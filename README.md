@@ -7,5 +7,5 @@
 
 ### GamesRepository
 - [x] Should be able find a game by entire or partial given title
-- [ ] Should be able to get the total count of games
-- [ ] Should be able to list users who have given game id
+- [x] Should be able to get the total count of games
+- [x] Should be able to list users who have given game id
